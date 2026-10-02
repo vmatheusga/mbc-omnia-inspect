@@ -35,7 +35,7 @@ A extensão ainda não está na Chrome Web Store. Por enquanto ela é instalada 
 
 ### Opção 1: baixar pronta (recomendado, não precisa de código)
 
-1. Abra a página de [**Releases**](https://github.com/vmatheusga/mbc-omnia-inspect/releases/latest) e baixe o arquivo `omnia-inspect-0.1.0-chrome.zip`.
+1. Abra a página de [**Releases**](https://github.com/vmatheusga/mbc-omnia-inspect/releases) e, na versão mais recente, baixe o arquivo `omnia-inspect-0.1.0-chrome.zip` (em **Assets**).
 2. Descompacte o `.zip` (no Mac, dois cliques no arquivo). Vai aparecer uma pasta com o `manifest.json` dentro.
 3. Mova essa pasta para um lugar fixo, por exemplo `Documentos/omnia-inspect`. **Não apague nem mova a pasta depois de instalar**: o Chrome lê a extensão direto dela.
 4. No Chrome, digite `chrome://extensions` na barra de endereço e aperte `Enter`.
