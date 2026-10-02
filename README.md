@@ -3,31 +3,23 @@
 > [!WARNING]
 > **Versão beta (0.1.0).** A extensão ainda está sendo otimizada: algumas telas podem mudar, a identificação de componentes pode errar em casos específicos e o desempenho em páginas muito grandes ainda está sendo melhorado. Encontrou um problema? Abra uma [issue](https://github.com/vmatheusga/mbc-omnia-inspect/issues) com o link da página e um print.
 
-Extensão do Chrome no estilo "Dev Mode" para o **Omnia DS** (e shadcn/ui). Você liga o modo inspecionar, clica em qualquer elemento da página, e o painel lateral mostra:
+Extensão do Chrome no estilo "Dev Mode" para o **Omnia DS** (e shadcn/ui).
 
-- **Componente**: Omnia DS, shadcn local, componente React da aplicação ou HTML nativo. Mostra também a parte (ex.: `Card › CardHeader`), variante e tamanho (`variant="brand"`, `size="sm"`) e o grau de confiança da identificação.
-- **Anatomia da camada**: box model no estilo do Figma, com margem, borda, padding e conteúdo, as medidas de cada lado e o `box-sizing`. Passe o mouse num valor para ver a classe e o token (`p-4 · --spacing × 4`); clique para copiar a classe.
-- **Propriedades** (Lista | Código), no formato do Figma Dev Mode:
-  - **Layout**: fluxo (horizontal/vertical/grade), largura e altura como **Preenchimento**, **Envolver** ou **Fixo**, espaço (gap), alinhamento, padding, margem, posição.
-  - **Modos**: tema, breakpoint e tokens detectados.
-  - **Cores** em Hex, RGB ou HSL, **Tipografia** e **Aparência** (raio, borda, sombra, opacidade), cada valor com o token (`--primary`, `--radius-md`…) e a classe Tailwind.
-  - Unidades em px ou rem. No modo Código, cada seção vira um bloco copiável em **CSS**, **CSS + tokens** (`var(--primary)`, `calc(var(--spacing) * 4)`) ou **Tailwind**.
-- **Alertas**: valores fora dos tokens, com sugestão do token mais próximo. Também aponta classes arbitrárias (`p-[13px]`), cores da paleta padrão do Tailwind, estilos inline, customizações por cima do componente e componente shadcn local que já existe no Omnia.
-- **Acessibilidade**: role, nome acessível, foco, `data-state` e ARIA, e contraste WCAG com nota AA/AAA.
-- **Código**: JSX pronto (`<Button variant="brand" size="sm">`), import, classes e variáveis CSS, tudo com botão de copiar.
-- **Árvore**: pais e filhos do elemento. Passe o mouse para destacar na página e clique para selecionar.
-- **Responsivo**: mostra a página dentro de molduras (iframes) com o tamanho exato de cada dispositivo. Assim as media queries e os breakpoints `sm/md/lg/xl/2xl` respondem de verdade.
-  - **Um dispositivo**: Mobile, Tablet, Laptop, Desktop, cada breakpoint do Tailwind ou um tamanho personalizado, com botão de girar.
-  - **Lado a lado**: todos os breakpoints ou os dispositivos que você escolher. Cada moldura rola de forma independente; na barra do palco, **Rolar juntos** espelha a rolagem e **Navegar juntos** (ligado por padrão) abre o mesmo link em todas.
-  - Dá para navegar e usar **Inspecionar** dentro das molduras. A análise mostra o breakpoint daquele tamanho e quais classes `md:`/`lg:` estão ativas. `Esc` ou `×` fecha.
-  - **Avançado**: emulação nativa do Chrome (a mesma do DevTools, para páginas que não funcionam em moldura). O botão **📷 Capturar** da barra do palco leva os tamanhos abertos para a aba Capturar.
-- **Capturar** (prints e vídeo): a aba **Print | Vídeo** usa a emulação nativa, então cada tamanho é exato e as media queries respondem de verdade. O overlay azul e o palco nunca aparecem no resultado, e a página volta ao que estava (tamanho, tema, rolagem, inspeção).
-  - **Print**: um ou mais tamanhos (breakpoints do Tailwind, dispositivos ou **W × H** próprio, que fica salvo). Área **Viewport**, **Página inteira** (inclusive apps em que quem rola é um painel, e páginas muito altas) ou **Elemento** selecionado (recorte em cada tamanho; avisa se ele sumir). Tema **Atual · Claro · Escuro · Os dois** (`prefers-color-scheme` + classe `.dark`), formato PNG/JPG/WebP, densidade 1x/2x/3x, congelar animações, esconder barras de rolagem, carregar imagens lazy e tempo de espera. Ao terminar: abrir galeria, baixar (`.zip` se forem várias) ou copiar.
-  - **Galeria**: zoom, linha ou grade, tema claro e escuro lado a lado, **moldura de dispositivo** (celular, tablet ou navegador, escolhida pela largura) com fundo transparente/branco/cinza, copiar, baixar uma ou todas (`.zip`). Os nomes saem como `host-rota-md-768x1024@2x-escuro.png`. As 10 últimas sessões ficam no **Histórico**.
-  - **Vídeo** (um tamanho por vez): MP4 (ou WebM se o Chrome não tiver H.264), 30 ou 60 quadros/s, tema, duração máxima e contagem regressiva. **Auto scroll** com velocidade em px/s (Lento 100 · Médio 250 · Rápido 500, ajustável ao vivo), só descer ou descer e voltar, suavização, pausas no início e no fim e parada automática ao chegar no fim. Durante a gravação o painel mostra o cronômetro, **Pausar** e **Parar**. `Alt` + `Shift` + `R` grava e para; o ícone da extensão mostra `REC`. Na página do vídeo dá para baixar o MP4 ou **exportar GIF** (largura e quadros/s à escolha).
-- **Imagens**: lista tudo o que é imagem na página, separado em **Ícones · SVG** e **Imagens** (PNG, JPG, WebP, GIF, AVIF…), com nome, formato, dimensões, peso e quantas vezes aparece. Você pode renomear, localizar na página, copiar o código do SVG e baixar um arquivo, os selecionados ou tudo em `.zip` (pastas `svg/` e `imagens/`). Ícones também podem sair como PNG 1x/2x/3x.
+> **Primeira vez aqui?** Vá direto para [**Instalar no Chrome**](#instalar-no-chrome-rodando-localmente). Leva uns 2 minutos e não precisa de código.
 
-> Para a moldura funcionar mesmo em sites que bloqueiam iframes, a extensão remove `X-Frame-Options`/`frame-ancestors` **só dos iframes daquela aba e daquele domínio**, enquanto o painel estiver aberto. Na emulação nativa (Avançado), o Chrome mostra a faixa "Omnia Inspect começou a depurar este navegador".
+## Sumário
+
+- [**Instalar no Chrome (rodando localmente)**](#instalar-no-chrome-rodando-localmente)
+  - [Opção 1: baixar pronta (recomendado)](#opção-1-baixar-pronta-recomendado-não-precisa-de-código)
+  - [Opção 2: gerar a partir do código](#opção-2-gerar-a-partir-do-código)
+  - [Problemas comuns](#problemas-comuns)
+- [O que a extensão faz](#o-que-a-extensão-faz)
+- [Usar](#usar)
+- [Como a identificação funciona](#como-a-identificação-funciona)
+- [Atualizar a base de conhecimento do Omnia](#atualizar-a-base-de-conhecimento-do-omnia)
+- [Desenvolvimento](#desenvolvimento)
+  - [Estrutura](#estrutura)
+  - [Próximos passos (fase 2)](#próximos-passos-fase-2)
 
 ## Instalar no Chrome (rodando localmente)
 
@@ -87,6 +79,34 @@ Depois de alterar o código, rode `pnpm build` de novo e clique em **↻ Recarre
 | O painel não reage na página | Recarregue a página (`⌘`/`Ctrl` + `R`) depois de instalar ou atualizar a extensão. |
 | Faixa "Omnia Inspect começou a depurar este navegador" | É esperado ao usar a emulação nativa e a aba Capturar. Some quando a captura termina. |
 | O Chrome avisa para desativar extensões do modo desenvolvedor | Clique em **Manter**. O aviso aparece porque a extensão não veio da Web Store. |
+
+## O que a extensão faz
+
+Você liga o modo inspecionar, clica em qualquer elemento da página, e o painel lateral mostra:
+
+- **Componente**: Omnia DS, shadcn local, componente React da aplicação ou HTML nativo. Mostra também a parte (ex.: `Card › CardHeader`), variante e tamanho (`variant="brand"`, `size="sm"`) e o grau de confiança da identificação.
+- **Anatomia da camada**: box model no estilo do Figma, com margem, borda, padding e conteúdo, as medidas de cada lado e o `box-sizing`. Passe o mouse num valor para ver a classe e o token (`p-4 · --spacing × 4`); clique para copiar a classe.
+- **Propriedades** (Lista | Código), no formato do Figma Dev Mode:
+  - **Layout**: fluxo (horizontal/vertical/grade), largura e altura como **Preenchimento**, **Envolver** ou **Fixo**, espaço (gap), alinhamento, padding, margem, posição.
+  - **Modos**: tema, breakpoint e tokens detectados.
+  - **Cores** em Hex, RGB ou HSL, **Tipografia** e **Aparência** (raio, borda, sombra, opacidade), cada valor com o token (`--primary`, `--radius-md`…) e a classe Tailwind.
+  - Unidades em px ou rem. No modo Código, cada seção vira um bloco copiável em **CSS**, **CSS + tokens** (`var(--primary)`, `calc(var(--spacing) * 4)`) ou **Tailwind**.
+- **Alertas**: valores fora dos tokens, com sugestão do token mais próximo. Também aponta classes arbitrárias (`p-[13px]`), cores da paleta padrão do Tailwind, estilos inline, customizações por cima do componente e componente shadcn local que já existe no Omnia.
+- **Acessibilidade**: role, nome acessível, foco, `data-state` e ARIA, e contraste WCAG com nota AA/AAA.
+- **Código**: JSX pronto (`<Button variant="brand" size="sm">`), import, classes e variáveis CSS, tudo com botão de copiar.
+- **Árvore**: pais e filhos do elemento. Passe o mouse para destacar na página e clique para selecionar.
+- **Responsivo**: mostra a página dentro de molduras (iframes) com o tamanho exato de cada dispositivo. Assim as media queries e os breakpoints `sm/md/lg/xl/2xl` respondem de verdade.
+  - **Um dispositivo**: Mobile, Tablet, Laptop, Desktop, cada breakpoint do Tailwind ou um tamanho personalizado, com botão de girar.
+  - **Lado a lado**: todos os breakpoints ou os dispositivos que você escolher. Cada moldura rola de forma independente; na barra do palco, **Rolar juntos** espelha a rolagem e **Navegar juntos** (ligado por padrão) abre o mesmo link em todas.
+  - Dá para navegar e usar **Inspecionar** dentro das molduras. A análise mostra o breakpoint daquele tamanho e quais classes `md:`/`lg:` estão ativas. `Esc` ou `×` fecha.
+  - **Avançado**: emulação nativa do Chrome (a mesma do DevTools, para páginas que não funcionam em moldura). O botão **📷 Capturar** da barra do palco leva os tamanhos abertos para a aba Capturar.
+- **Capturar** (prints e vídeo): a aba **Print | Vídeo** usa a emulação nativa, então cada tamanho é exato e as media queries respondem de verdade. O overlay azul e o palco nunca aparecem no resultado, e a página volta ao que estava (tamanho, tema, rolagem, inspeção).
+  - **Print**: um ou mais tamanhos (breakpoints do Tailwind, dispositivos ou **W × H** próprio, que fica salvo). Área **Viewport**, **Página inteira** (inclusive apps em que quem rola é um painel, e páginas muito altas) ou **Elemento** selecionado (recorte em cada tamanho; avisa se ele sumir). Tema **Atual · Claro · Escuro · Os dois** (`prefers-color-scheme` + classe `.dark`), formato PNG/JPG/WebP, densidade 1x/2x/3x, congelar animações, esconder barras de rolagem, carregar imagens lazy e tempo de espera. Ao terminar: abrir galeria, baixar (`.zip` se forem várias) ou copiar.
+  - **Galeria**: zoom, linha ou grade, tema claro e escuro lado a lado, **moldura de dispositivo** (celular, tablet ou navegador, escolhida pela largura) com fundo transparente/branco/cinza, copiar, baixar uma ou todas (`.zip`). Os nomes saem como `host-rota-md-768x1024@2x-escuro.png`. As 10 últimas sessões ficam no **Histórico**.
+  - **Vídeo** (um tamanho por vez): MP4 (ou WebM se o Chrome não tiver H.264), 30 ou 60 quadros/s, tema, duração máxima e contagem regressiva. **Auto scroll** com velocidade em px/s (Lento 100 · Médio 250 · Rápido 500, ajustável ao vivo), só descer ou descer e voltar, suavização, pausas no início e no fim e parada automática ao chegar no fim. Durante a gravação o painel mostra o cronômetro, **Pausar** e **Parar**. `Alt` + `Shift` + `R` grava e para; o ícone da extensão mostra `REC`. Na página do vídeo dá para baixar o MP4 ou **exportar GIF** (largura e quadros/s à escolha).
+- **Imagens**: lista tudo o que é imagem na página, separado em **Ícones · SVG** e **Imagens** (PNG, JPG, WebP, GIF, AVIF…), com nome, formato, dimensões, peso e quantas vezes aparece. Você pode renomear, localizar na página, copiar o código do SVG e baixar um arquivo, os selecionados ou tudo em `.zip` (pastas `svg/` e `imagens/`). Ícones também podem sair como PNG 1x/2x/3x.
+
+> Para a moldura funcionar mesmo em sites que bloqueiam iframes, a extensão remove `X-Frame-Options`/`frame-ancestors` **só dos iframes daquela aba e daquele domínio**, enquanto o painel estiver aberto. Na emulação nativa (Avançado), o Chrome mostra a faixa "Omnia Inspect começou a depurar este navegador".
 
 ## Usar
 
