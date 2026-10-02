@@ -1,0 +1,12 @@
+@import "@omnia-ds/tokens/styles/fonts.css";
+@import "tailwindcss" source(none);
+@import "@omnia-ds/tokens/styles/base.css";
+
+@source "./";
+@source "../sidepanel/components";
+
+body {
+  background: var(--body-background);
+  font-size: var(--text-sm);
+  -webkit-font-smoothing: antialiased;
+}

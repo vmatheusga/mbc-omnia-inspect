@@ -1,0 +1,13 @@
+@import "@omnia-ds/tokens/styles/fonts.css";
+@import "tailwindcss" source(none);
+@import "@omnia-ds/tokens/styles/base.css";
+
+@source "./";
+@source "../src/entrypoints/sidepanel";
+@source "../../omnia-ds/packages/ui/src/components/ui";
+
+html,
+body,
+#root {
+  height: 100%;
+}

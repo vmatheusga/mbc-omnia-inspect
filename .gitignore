@@ -1,0 +1,8 @@
+node_modules
+.output
+dist
+.wxt
+stats.html
+.DS_Store
+web-ext.config.ts
+.claude/
